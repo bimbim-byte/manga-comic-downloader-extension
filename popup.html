@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; }
+    body { 
+      width: 320px; height: 360px; margin: 0; padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background-color: #121212; color: #ffffff;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .header { border-bottom: 1px solid #2d2d2d; padding-bottom: 12px; }
+    h3 { margin: 0; font-size: 16px; color: #00d2d3; letter-spacing: 0.5px; }
+    
+    .status-container { 
+      background-color: #1e1e1e; padding: 12px; border-radius: 8px; 
+      font-size: 12px; border: 1px solid #2d2d2d; margin: 15px 0;
+    }
+    .status-label { color: #888; margin-bottom: 4px; display: block; }
+    #status-text { font-weight: bold; font-size: 13px; }
+    
+    .btn-group { display: flex; flex-direction: column; gap: 10px; flex-grow: 1; justify-content: center; }
+    .btn-option { 
+      width: 100%; background-color: #262626; color: #ffffff; border: 1px solid #3a3a3a; 
+      padding: 14px 16px; border-radius: 10px; font-size: 13px; font-weight: 600; 
+      text-align: left; cursor: pointer; transition: all 0.2s ease;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .btn-option:hover { 
+      background-color: #10ac84; border-color: #10ac84;
+      transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16, 172, 132, 0.2);
+    }
+    .btn-option::after { content: "→"; opacity: 0.6; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h3>Manga Downloader Hub</h3>
+  </div>
+  
+  <div class="status-container">
+    <span class="status-label">Status Sistem:</span>
+    <span id="status-text" style="color: #ff9f43;">Menghubungkan...</span>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-option" data-format="IMAGE">🖼️ Opsi 1: Simpan Gambar (.jpg)</button>
+    <button class="btn-option" data-format="PDF">📕 Opsi 2: Cetak Dokumen (.PDF)</button>
+    <button class="btn-option" data-format="CBZ">📘 Opsi 3: Cetak Komik (.CBZ)</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

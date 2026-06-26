@@ -1,0 +1,73 @@
+{
+  "manifest_version": 3,
+  "name": "Manga/Comic Downloader PRO",
+  "version": "1.0.0",
+  "description": "Save your manga/comic to image, PDF, or CBZ file. Supports MangaPlus, Naver Webtoon, and LINE Webtoon, and universal detection for all sites.","permissions": [
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "icons": {
+    "32": "icons/icon32.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "MCD Panel",
+    "default_icon": {
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mangaplus.shueisha.co.jp/viewer/*"
+      ],
+      "js": [
+        "jszip.min.js",
+        "jspdf.umd.min.js",
+        "extractor-mangaplus.js",
+        "core-runner.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://comic.naver.com/webtoon/detail*",
+        "https://comic.naver.com/webtoon/detail*"
+      ],
+      "js": [
+        "extractor-naver.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.webtoons.com/*/viewer*"
+      ],
+      "js": [
+        "extractor-webtoons.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "http://comic.naver.com/webtoon/detail*",
+        "https://comic.naver.com/webtoon/detail*",
+        "https://www.webtoons.com/*/viewer*"
+      ],
+      "js": [
+        "jszip.min.js",
+        "jspdf.umd.min.js",
+        "core-runner.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
